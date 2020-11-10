@@ -89,6 +89,9 @@ const mainController = (db) => {
     } = req.body);
 
     try {
+    
+        if(!id) throw new Error('User id is require param');
+
       const user = await User.findByPk(id);
 
       if (!user) throw new Error("User not found");
