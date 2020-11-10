@@ -1,6 +1,11 @@
 const mainController = (db) => {
   const User = require("../models/user")(db);
 
+
+  this.redirectUsers = (req,res,next) =>{
+      return res.status(301).redirect('/users')
+  }
+
   this.index = async (req, res, next) => {
     try {
       const users = await User.findAll();
