@@ -1,9 +1,9 @@
 const  Sequelize  = require("sequelize");
 
 module.exports = async () => {
-    const sequelize = new Sequelize('people','postgres','postgres',{
+    const sequelize = new Sequelize(process.env.DATABASE || 'people',process.env.DB_USERNAME || 'postgres',process.env.DB_PASSWORD || 'postgres',{
         dialect:'postgres',
-        host:'localhost'
+        host:process.env.HOST || 'localhost'
     })
 
     try{
