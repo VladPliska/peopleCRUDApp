@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+module.exports = (db) => {
+  const mainController = require("../controller/mainController")(db);
 
-module.exports = router;
+  router.get("/", mainController.index);
+  router.put("/", mainController.store);
+  router.get("/:id", mainController.show);
+  router.patch("/:id", mainController.update);
+  router.delete("/:id",mainController.destroy);
+
+  return router;
+};
